@@ -47,7 +47,7 @@ $ PATH=$PATH:/path/to/key-tuner/bin
 
 ### Install for iOS
 
-- install OpenTerm
+- install [OpenTerm](https://github.com/louisdh/openterm)
 - copy `scripts/tune.cub` to scripts
 
 
