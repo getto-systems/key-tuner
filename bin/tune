@@ -16,7 +16,7 @@ tune_main(){
 
   read -p "passphrase : " passphrase
   read -p "service : " salt
-  read -p "mode (1: full, 2: without figure) : " mode
+  read -p "mode (1: full, 2: short) : " mode
 
   case "$mode" in
     1)
