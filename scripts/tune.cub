@@ -4,7 +4,7 @@ passphrase = readLine()
 print("service : ")
 salt = readLine()
 
-print("mode (1: full, 2: without figure) : ")
+print("mode (1: full, 2: short) : ")
 mode = readNumber()
 
 map = ""
