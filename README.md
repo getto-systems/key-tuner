@@ -6,7 +6,7 @@ password generator
 $ tune
 passphrase : <Enter your passphrase>
 service : <Enter service name>
-mode (1: full, 2: short) : <Enter generate mode>
+mode (0: ex, 1: full, 2: short) : <Enter generate mode>
 length : <Enter password length>
 ...(generation)
 password : GENERATED-PASSWORD
@@ -35,6 +35,7 @@ password : GENERATED-PASSWORD
 
 ### mode
 
+- 0: ex : 0-9a-zA-Z-/:;()&@.,?!'[]{}#%^*+=_|<>$
 - 1: full : 0-9a-zA-Z@#&*%!?
 - 2: short : 0-9a-z
 
