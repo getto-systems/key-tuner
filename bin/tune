@@ -16,9 +16,12 @@ tune_main(){
 
   read -p "passphrase : " passphrase
   read -p "service : " salt
-  read -p "mode (1: full, 2: short) : " mode
+  read -p "mode (0: ex, 1: full, 2: short) : " mode
 
   case "$mode" in
+    0)
+      map="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-/:;()&@.,?!'[]{}#%^*+=_|<>$"
+      ;;
     1)
       map="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#&*%!?@#&*%!?@#&*%!?"
       ;;
