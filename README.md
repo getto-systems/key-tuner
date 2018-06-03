@@ -38,17 +38,22 @@ password : GENERATED-PASSWORD
 - 1: full : 0-9a-zA-Z@#&*%!?
 - 2: without figure : 0-9a-z
 
-### Install
+### Install for Linux
 
 ```bash
 $ git clone https://github.com/getto-systems/key-tuner.git
 $ PATH=$PATH:/path/to/key-tuner/bin
 ```
 
+### Install for iOS
+
+- install OpenTerm
+- copy `scripts/tune.cub` to scripts
+
 
 <a id="License"></a>
 ## License
 
-REPOSITORY NAME is licensed under the [MIT](LICENSE) license.
+key-tuner is licensed under the [MIT](LICENSE) license.
 
 Copyright &copy; since 2018 shun@getto.systems

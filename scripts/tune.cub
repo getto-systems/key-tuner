@@ -30,15 +30,14 @@ func summary(str) returns {
 	len = sizeOf(str)
 	for i=0, i<len, i = i+1 {
 		char = stringAtRange(str, Range(i, i+1))
-		line = captureShell("echo " + char + " | chksum")
+		line = captureShell("echo '" + char + "' | chksum")
 		tips = split(line, " ")
 		sum += parseNumber(tips[0])
 	}
 	return sum
 }
 
-seed = summary(passphrase) + summary(salt)
-seed *= length
+seed = (summary(passphrase) + summary(salt)) * length
 
 tips = split("" + seed, ".")
 seedStr = tips[0]
