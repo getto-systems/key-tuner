@@ -1,0 +1,58 @@
+print("passphrase : ")
+passphrase = readLine()
+
+print("service : ")
+salt = readLine()
+
+print("mode (1: full, 2: without figure) : ")
+mode = readNumber()
+
+map = ""
+if mode == 1 {
+	map += "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#&*%!?@#&*%!?@#&*%!?"
+} else if mode == 2 {
+	map += "0123456789abcdefghijklmnopqrstuvwxyz"
+} else {
+	println("choose mode in [ 1 , 2 ]")
+	exit()
+}
+
+print("length : ")
+length = readNumber()
+
+if !isNumber(length) {
+	println("input valid length")
+	exit()
+}
+
+func summary(str) returns {
+	sum = 0
+	len = sizeOf(str)
+	for i=0, i<len, i = i+1 {
+		char = stringAtRange(str, Range(i, i+1))
+		line = captureShell("echo " + char + " | chksum")
+		tips = split(line, " ")
+		sum += parseNumber(tips[0])
+	}
+	return sum
+}
+
+seed = summary(passphrase) + summary(salt)
+seed *= length
+
+tips = split("" + seed, ".")
+seedStr = tips[0]
+seedLength = sizeOf(seedStr)
+
+result = ""
+mapLength = sizeOf(map)
+for i=0, i<length, i = i+1 {
+	seedIndex = mod(i, seedLength)
+	seedTip = stringAtRange(seedStr + seedStr, Range(seedIndex, seedIndex+3))
+	seedNumber = parseNumber(seedTip)
+	index = mod(seedNumber * (i+1), mapLength)
+	result += stringAtRange(map, Range(index, index+1))
+	print(".")
+}
+println("")
+println("password : " + result)
