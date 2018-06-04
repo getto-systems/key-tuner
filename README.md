@@ -6,6 +6,7 @@ password generator
 $ tune
 passphrase : <Enter your passphrase>
 service : <Enter service name>
+version : <Enter version>
 mode (0: ex, 1: full, 2: short) : <Enter generate mode>
 length : <Enter password length>
 ...(generation)
@@ -28,10 +29,15 @@ password : GENERATED-PASSWORD
 <a id="Usage"></a>
 ## Usage
 
-1. passphrase : enter your passphrase for current session
-1. service : enter service name
-1. mode : select generate-mode
-1. length : enter password length
+1. passphrase : your passphrase : e.g. "my passphrase"
+1. service : service name : e.g. "amazon"
+1. version : password version : e.g. "2018.06.03"
+1. mode : generate mode
+1. length : password length
+
+use `"$passphrase" + "$service" + "$version"` as password seed
+
+with same password seed, generate same password
 
 ### mode
 
