@@ -3,6 +3,7 @@
 tune_main(){
   local passphrase
   local salt
+  local version
   local mode
   local map
   local length
@@ -18,6 +19,7 @@ tune_main(){
 
   read -p "passphrase : " passphrase
   read -p "service : " salt
+  read -p "version : " version
   read -p "mode (0: ex, 1: full, 2: short) : " mode
 
   case "$mode" in
@@ -41,6 +43,7 @@ tune_main(){
   sum=0
   tune_summary "$passphrase"
   tune_summary "$salt"
+  tune_summary "$version"
   sum=$((sum * length))
 
   seed="$sum$sum"

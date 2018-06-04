@@ -4,6 +4,9 @@ passphrase = readLine()
 print("service : ")
 salt = readLine()
 
+print("version : ")
+version = readLine()
+
 print("mode (0: ex, 1: full, 2: short) : ")
 mode = readNumber()
 
@@ -39,7 +42,7 @@ func summary(str) returns {
 	return sum
 }
 
-seed = (summary(passphrase) + summary(salt)) * length
+seed = (summary(passphrase) + summary(salt) + summary(version)) * length
 
 tips = split("" + seed, ".")
 seedStr = tips[0]
