@@ -46,14 +46,21 @@ seedStr = tips[0]
 seedLength = sizeOf(seedStr)
 
 result = ""
+last = ""
+i = 0
 mapLength = sizeOf(map)
-for i=0, i<length, i = i+1 {
+while sizeOf(result) < length {
 	seedIndex = mod(i, seedLength)
 	seedTip = stringAtRange(seedStr + seedStr, Range(seedIndex, seedIndex+3))
 	seedNumber = parseNumber(seedTip)
 	index = mod(seedNumber * (i+1), mapLength)
-	result += stringAtRange(map, Range(index, index+1))
-	print(".")
+	char = stringAtRange(map, Range(index, index+1))
+	if char != last {
+		result += char
+		print(".")
+	}
+	i += 1
+	last = char
 }
 println("")
 println("password : " + result)
