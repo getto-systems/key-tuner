@@ -58,8 +58,6 @@ tune_main(){
     if [ "$char" != "$last" ]; then
       result="$result$char"
       echo -n "."
-    else
-      echo -n "!"
     fi
     i=$((i+1))
     last=$char
