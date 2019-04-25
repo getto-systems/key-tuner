@@ -45,14 +45,16 @@ with same password seed, generate same password
 - 1: full : 0-9a-zA-Z@#&*%!?
 - 2: short : 0-9a-z
 
-### Install for Linux
+### Install
+
+#### Linux
 
 ```bash
 $ git clone https://github.com/getto-systems/key-tuner.git
 $ PATH=$PATH:/path/to/key-tuner/bin
 ```
 
-### Install for iOS
+#### iOS
 
 - install [OpenTerm](https://github.com/louisdh/openterm)
 - copy `scripts/tune.cub` to scripts
