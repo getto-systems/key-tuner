@@ -1,26 +1,21 @@
+import sys
 import subprocess
 import locale
+import re
 from functools import reduce
 
 def tune():
-    passphrase = input("passphrase : ")
-    service = input("service : ")
-    version = input("version : ")
-    mode = input("mode : ")
+    args = parse_args()
 
-    if mode == "0":
-        characters="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-/:;()&@.,?!'[]{}#%^*+=_|<>$"
-    else:
-        if mode == "1":
-            characters="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#&*%!?@#&*%!?@#&*%!?"
-        else:
-            if mode == "2":
-                characters="0123456789abcdefghijklmnopqrstuvwxyz"
-            else:
-                print("choose mode in [ 0, 1, 2 ]")
-                return
+    passphrase = args["passphrase"]
+    service = args["service"]
+    version = args["version"]
+    mode = args["mode"]
+    length = locale.atoi(args["length"])
 
-    length = locale.atoi(input("length : "))
+    print("%s(%s)[%s;%d]" % (service, version, mode, length))
+
+    characters = parse_characters(mode)
 
     digits = reduce(summary, [passphrase, service, version], 0) * length
 
@@ -49,7 +44,36 @@ def tune():
     print("")
     print("password : " + result)
 
-def characters(mode):
+def parse_args():
+    args = " ".join(reduce(gather_arg, range(1, len(sys.argv)), [])).split(",")
+
+    return reduce(match_arg, args, {
+        "passphrase": "",
+        "service": "",
+        "version": "",
+        "mode": "",
+        "length": "0",
+    })
+
+def gather_arg(acc, index):
+    acc.append(sys.argv[index])
+    return acc
+
+def match_arg(acc, arg):
+    acc["passphrase"] = match(acc["passphrase"], ".*pass.*:(.*)", arg)
+    acc["service"] = match(acc["service"], ".*se?rv.*:(.*)", arg)
+    acc["version"] = match(acc["version"], ".*ver.*:(.*)", arg)
+    acc["mode"] = match(acc["mode"], ".*mode.*:(.*)", arg)
+    acc["length"] = match(acc["length"], ".*len.*:(.*)", arg)
+    return acc
+
+def match(acc, pattern, arg):
+    result = re.match(pattern, arg)
+    if result:
+        return result.group(1).strip()
+    return acc
+
+def parse_characters(mode):
     if mode == "0":
         return "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-/:;()&@.,?!'[]{}#%^*+=_|<>$"
 
