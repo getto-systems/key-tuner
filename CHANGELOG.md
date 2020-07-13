@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 0.2.1
+
+- add: bump-ignore : See merge request getto-systems-base/labo/shell/key-tuner!12
+- add: git-maint-repo : See merge request getto-systems-base/labo/shell/key-tuner!10
+
+
 ## Version : 0.2.0
 
 - fix: gitlab-ci : See merge request getto-systems-base/labo/shell/key-tuner!8
