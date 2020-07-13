@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 0.3.0
+
+- fix: tune.py : See merge request getto-systems-base/labo/shell/key-tuner!14
+
+
 ## Version : 0.2.1
 
 - add: bump-ignore : See merge request getto-systems-base/labo/shell/key-tuner!12
