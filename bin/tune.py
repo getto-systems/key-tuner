@@ -42,7 +42,7 @@ def tune():
         last = char
 
     print("")
-    print("password : " + result)
+    print(result)
 
 def parse_args():
     args = " ".join(reduce(gather_arg, range(1, len(sys.argv)), [])).split(",")
