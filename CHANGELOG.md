@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 0.4.0
+
+- fix: gitlab-ci : See merge request getto-systems-base/labo/shell/key-tuner!16
+
+
 ## Version : 0.3.0
 
 - fix: tune.py : See merge request getto-systems-base/labo/shell/key-tuner!14
