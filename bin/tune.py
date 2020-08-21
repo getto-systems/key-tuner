@@ -27,7 +27,7 @@ def tune():
 
     characters_len = len(characters)
 
-    for i in range(0, length):
+    for i in range(0, length*10):
         seed_index = i % digits_len
 
         seed_number = locale.atoi(seed[seed_index:seed_index+3])
@@ -36,13 +36,18 @@ def tune():
         char = characters[index]
         if char != last:
             result = result + char
-
             print(".", end="")
+            if len(result) == length:
+                break
 
         last = char
 
-    print("")
-    print(result)
+    if len(result) != length:
+        print("")
+        print("generate error")
+    else:
+        print("")
+        print(result)
 
 def parse_args():
     args = " ".join(reduce(gather_arg, range(1, len(sys.argv)), [])).split(",")
